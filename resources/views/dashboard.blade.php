@@ -222,16 +222,26 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="index.html">
-                <span class="menu-title">Dashboard</span>
-                <i class="mdi mdi-home menu-icon"></i>
-              </a>
+                <a class="nav-link" data-bs-toggle="collapse" href="#dashboard" aria-expanded="false" aria-controls="dashboard">
+                    <span class="menu-title">Dashboard</span>
+                    <i class="mdi mdi-view-dashboard menu-icon"></i>
+                </a>
+                <div class="collapse" id="dashboard">
+                    <ul class="nav flex-column sub-menu">
+                        <li class="nav-item">
+                            <a class="nav-link" href="pages/dashboard/overview.html">Overview</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="pages/dashboard/stats.html">Stats</a>
+                        </li>
+                    </ul>
+                </div>
             </li>
             <li class="nav-item">
               <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
                 <span class="menu-title">Admin</span>
                 <i class="menu-arrow"></i>
-                <i class="mdi mdi-crosshairs-gps menu-icon"></i>
+                     <i class="mdi mdi-account-circle menu-icon"></i>
               </a>
               <div class="collapse" id="ui-basic">
                 <ul class="nav flex-column sub-menu">
@@ -248,22 +258,22 @@
               </div>
             </li>
             <li class="nav-item">
-              <a class="nav-link" data-bs-toggle="collapse" href="#icons" aria-expanded="false" aria-controls="icons">
-                <span class="menu-title">Reception</span>
-                <i class="mdi mdi-contacts menu-icon"></i>
-              </a>
-              <div class="collapse" id="icons">
-                <ul class="nav flex-column sub-menu">
-                  <li class="nav-item">
-                    <a class="nav-link" href="pages/icons/font-awesome.html">Font Awesome</a>
-                  </li>
-                </ul>
-              </div>
-            </li>
+                <a class="nav-link" data-bs-toggle="collapse" href="#icons" aria-expanded="false" aria-controls="icons">
+                  <span class="menu-title">Reception</span>
+                  <i class="mdi mdi-deskphone menu-icon"></i>
+                </a>
+                <div class="collapse" id="icons">
+                  <ul class="nav flex-column sub-menu">
+                    <li class="nav-item">
+                      <a class="nav-link" href="pages/icons/font-awesome.html">Font Awesome</a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
             <li class="nav-item">
               <a class="nav-link" data-bs-toggle="collapse" href="#forms" aria-expanded="false" aria-controls="forms">
-                <span class="menu-title">Forms</span>
-                <i class="mdi mdi-format-list-bulleted menu-icon"></i>
+                <span class="menu-title">Cashier</span>
+                <i class="mdi mdi-cash-register menu-icon"></i>
               </a>
               <div class="collapse" id="forms">
                 <ul class="nav flex-column sub-menu">
@@ -273,10 +283,111 @@
                 </ul>
               </div>
             </li>
+
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="collapse" href="#manage-users" aria-expanded="false" aria-controls="manage-users">
+                    <span class="menu-title">Manage Users</span>
+                    <i class="mdi mdi-account-group menu-icon"></i>
+                </a>
+                <div class="collapse" id="manage-users">
+                    <ul class="nav flex-column sub-menu">
+                        <li class="nav-item">
+                            <a class="nav-link" href="pages/users/doctors.html">Doctors</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="pages/users/nurses.html">Nurses</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="pages/users/patients.html">Patients</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="pages/users/staff.html">Staff</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="collapse" href="#appointments" aria-expanded="false" aria-controls="appointments">
+                    <span class="menu-title">Appointments</span>
+                    <i class="mdi mdi-calendar-check menu-icon"></i>
+                </a>
+                <div class="collapse" id="appointments">
+                    <ul class="nav flex-column sub-menu">
+                        <li class="nav-item">
+                            <a class="nav-link" href="pages/appointments/view.html">View</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="pages/appointments/approve.html">Approve</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="pages/appointments/cancel.html">Cancel</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="collapse" href="#departments" aria-expanded="false" aria-controls="departments">
+                    <span class="menu-title">Departments</span>
+                    <i class="mdi mdi-hospital-building menu-icon"></i>
+                </a>
+                <div class="collapse" id="departments">
+                    <ul class="nav flex-column sub-menu">
+                        <li class="nav-item">
+                            <a class="nav-link" href="pages/departments/manage.html">Add/Edit Departments</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="collapse" href="#rooms-beds" aria-expanded="false" aria-controls="rooms-beds">
+                    <span class="menu-title">Rooms & Beds</span>
+                    <i class="mdi mdi-bed menu-icon"></i>
+                </a>
+                <div class="collapse" id="rooms-beds">
+                    <ul class="nav flex-column sub-menu">
+                        <li class="nav-item">
+                            <a class="nav-link" href="pages/rooms/manage.html">Manage Room Allocation</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="collapse" href="#billing" aria-expanded="false" aria-controls="billing">
+                    <span class="menu-title">Billing</span>
+                    <i class="mdi mdi-cash-multiple menu-icon"></i>
+                </a>
+                <div class="collapse" id="billing">
+                    <ul class="nav flex-column sub-menu">
+                        <li class="nav-item">
+                            <a class="nav-link" href="pages/billing/manage.html">Manage Invoices</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="pages/billing/payments.html">Payments</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="collapse" href="#reports" aria-expanded="false" aria-controls="reports">
+                    <span class="menu-title">Reports</span>
+                    <i class="mdi mdi-chart-pie menu-icon"></i>
+                </a>
+                <div class="collapse" id="reports">
+                    <ul class="nav flex-column sub-menu">
+                        <li class="nav-item">
+                            <a class="nav-link" href="pages/reports/financial.html">Financial Reports</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="pages/reports/appointments.html">Appointment Reports</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
             <li class="nav-item">
               <a class="nav-link" data-bs-toggle="collapse" href="#charts" aria-expanded="false" aria-controls="charts">
-                <span class="menu-title">Charts</span>
-                <i class="mdi mdi-chart-bar menu-icon"></i>
+                <span class="menu-title">Nurse</span>
+                <i class="mdi mdi-nurse menu-icon"></i>
               </a>
               <div class="collapse" id="charts">
                 <ul class="nav flex-column sub-menu">
@@ -286,9 +397,92 @@
                 </ul>
               </div>
             </li>
+
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="collapse" href="#doctor-category" aria-expanded="false" aria-controls="doctor-category">
+                    <span class="menu-title">Doctor Category</span>
+                    <i class="mdi mdi-stethoscope menu-icon"></i>
+                </a>
+                <div class="collapse" id="doctor-category">
+                    <ul class="nav flex-column sub-menu">
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="collapse" href="#doctor-dashboard" aria-expanded="false" aria-controls="doctor-dashboard">
+                                Dashboard
+                            </a>
+                            <div class="collapse" id="doctor-dashboard">
+                                <ul class="nav flex-column sub-menu">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="pages/doctor/dashboard/overview.html">Overview</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="collapse" href="#my-appointments" aria-expanded="false" aria-controls="my-appointments">
+                                My Appointments
+                            </a>
+                            <div class="collapse" id="my-appointments">
+                                <ul class="nav flex-column sub-menu">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="pages/doctor/appointments/today.html">Today's Appointments</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="pages/doctor/appointments/upcoming.html">Upcoming</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="collapse" href="#patient-records" aria-expanded="false" aria-controls="patient-records">
+                                Patient Records
+                            </a>
+                            <div class="collapse" id="patient-records">
+                                <ul class="nav flex-column sub-menu">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="pages/doctor/patient-records/view.html">View Patient History</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="collapse" href="#prescriptions" aria-expanded="false" aria-controls="prescriptions">
+                                Prescriptions
+                            </a>
+                            <div class="collapse" id="prescriptions">
+                                <ul class="nav flex-column sub-menu">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="pages/doctor/prescriptions/create.html">Create</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="pages/doctor/prescriptions/view.html">View Prescriptions</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="collapse" href="#medical-reports" aria-expanded="false" aria-controls="medical-reports">
+                                Medical Reports
+                            </a>
+                            <div class="collapse" id="medical-reports">
+                                <ul class="nav flex-column sub-menu">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="pages/doctor/medical-reports/upload.html">Upload Reports</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="pages/doctor/medical-reports/view.html">View Reports</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="pages/doctor/profile/edit.html">Profile</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
             <li class="nav-item">
               <a class="nav-link" data-bs-toggle="collapse" href="#tables" aria-expanded="false" aria-controls="tables">
-                <span class="menu-title">Tables</span>
+                <span class="menu-title">Pharmacy</span>
                 <i class="mdi mdi-table-large menu-icon"></i>
               </a>
               <div class="collapse" id="tables">
@@ -301,7 +495,7 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" data-bs-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
-                <span class="menu-title">User Pages</span>
+                <span class="menu-title">Laboratory</span>
                 <i class="menu-arrow"></i>
                 <i class="mdi mdi-lock menu-icon"></i>
               </a>
@@ -327,9 +521,25 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" href="docs/documentation.html" target="_blank">
-                <span class="menu-title">Documentation</span>
+                <span class="menu-title">Radiology</span>
                 <i class="mdi mdi-file-document-box menu-icon"></i>
               </a>
+            </li>
+                        <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="collapse" href="#settings" aria-expanded="false" aria-controls="settings">
+                    <span class="menu-title">Settings</span>
+                    <i class="mdi mdi-settings menu-icon"></i>
+                </a>
+                <div class="collapse" id="settings">
+                    <ul class="nav flex-column sub-menu">
+                        <li class="nav-item">
+                            <a class="nav-link" href="pages/settings/system.html">System Settings</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="pages/settings/profile.html">Profile Settings</a>
+                        </li>
+                    </ul>
+                </div>
             </li>
           </ul>
         </nav>
@@ -494,7 +704,7 @@
     </div>
     <!-- container-scroller -->
     <!-- plugins:js -->
-    
+
     <script src="{{ asset('build/assets/vendors/js/vendor.bundle.base.js') }}"></script>
     <!-- endinject -->
     <!-- Plugin js for this page -->
@@ -506,7 +716,7 @@
     {{-- <script src="assets/js/off-canvas.js"></script> --}}
     <script src="{{ asset('build/assets/js/off-canvas.js') }}"></script>
     <script src="{{ asset('build/assets/js/misc.js') }}"></script>
-    
+
     <script src="{{ asset('build/assets/js/settings.js') }}"></script>
     <script src="{{ asset('build/assets/js/todolist.js') }}"></script>
     <script src="{{ asset('build/assets/js/jquery.cookie.js') }}"></script>
@@ -514,7 +724,7 @@
     <!-- Custom js for this page -->
     <script src="{{ asset('build/assets/js/dashboard.js') }}"></script>
 
-    
+
 
 
     <!-- End custom js for this page -->
