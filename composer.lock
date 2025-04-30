@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c953fd4bb9f90eedd835ca2773cd64dc",
+    "content-hash": "9805bbed0e844cc7cfa0f90323897def",
     "packages": [
         {
             "name": "brick/math",
@@ -2466,6 +2466,154 @@
             "time": "2024-07-20T21:41:07+00:00"
         },
         {
+            "name": "protonemedia/laravel-splade",
+            "version": "1.4.21",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/protonemedia/laravel-splade.git",
+                "reference": "7ac02ea588d3489202ea9b2789d082b6a9c6799f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/protonemedia/laravel-splade/zipball/7ac02ea588d3489202ea9b2789d082b6a9c6799f",
+                "reference": "7ac02ea588d3489202ea9b2789d082b6a9c6799f",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/contracts": "^10.48.23|^11.33|^12.0",
+                "php": "^8.2|^8.3|^8.4"
+            },
+            "require-dev": {
+                "laravel/pint": "^1.0",
+                "nunomaduro/collision": "^7.10|^8.1",
+                "nunomaduro/larastan": "^2.0.1",
+                "orchestra/testbench": "^8.0|^9.0|^10.0",
+                "phpunit/phpunit": "^10.4|^11.5.3"
+            },
+            "suggest": {
+                "kirschbaum-development/eloquent-power-joins": "Required to enable support sorting by (nested) relationships in Splade Tables (^4.0)",
+                "maatwebsite/excel": "Required to enable support exports in Splade Tables (^3.1)",
+                "spatie/fractalistic": "Required to enable support for Fractal transformers (^2.9)"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "aliases": {
+                        "SEO": "ProtoneMedia\\Splade\\Facades\\SEO",
+                        "Toast": "ProtoneMedia\\Splade\\Facades\\Toast",
+                        "Splade": "ProtoneMedia\\Splade\\Facades\\Splade",
+                        "Animation": "ProtoneMedia\\Splade\\Facades\\Animation"
+                    },
+                    "providers": [
+                        "ProtoneMedia\\Splade\\ServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "ProtoneMedia\\Splade\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Pascal Baljet",
+                    "email": "pascal@protone.media",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Laravel Splade: the magic of Inertia.js with the simplicity of Blade.",
+            "homepage": "https://github.com/protonemedia/laravel-splade",
+            "keywords": [
+                "laravel",
+                "laravel-splade",
+                "protonemedia"
+            ],
+            "support": {
+                "issues": "https://github.com/protonemedia/laravel-splade/issues",
+                "source": "https://github.com/protonemedia/laravel-splade/tree/1.4.21"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/pascalbaljet",
+                    "type": "github"
+                }
+            ],
+            "time": "2025-02-23T20:39:36+00:00"
+        },
+        {
+            "name": "protonemedia/laravel-splade-breeze",
+            "version": "2.5.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/protonemedia/laravel-splade-breeze.git",
+                "reference": "a33794a366a7791fa735e716bca18e98dbfe5f68"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/protonemedia/laravel-splade-breeze/zipball/a33794a366a7791fa735e716bca18e98dbfe5f68",
+                "reference": "a33794a366a7791fa735e716bca18e98dbfe5f68",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/console": "^10.48.3|^11.0",
+                "illuminate/filesystem": "^10.48.3|^11.0",
+                "illuminate/support": "^10.48.3|^11.0",
+                "illuminate/validation": "^10.48.3|^11.0",
+                "php": "^8.2",
+                "protonemedia/laravel-splade": "^1.4.18"
+            },
+            "require-dev": {
+                "laravel/pint": "^1.1"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Laravel\\Breeze\\BreezeServiceProvider"
+                    ]
+                },
+                "branch-alias": {
+                    "dev-master": "1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Laravel\\Breeze\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylor@laravel.com"
+                },
+                {
+                    "name": "Pascal Baljet",
+                    "email": "pascal@protone.media"
+                }
+            ],
+            "description": "Minimal Laravel authentication scaffolding with Laravel Splade.",
+            "keywords": [
+                "auth",
+                "laravel",
+                "laravel-splade",
+                "splade"
+            ],
+            "support": {
+                "issues": "https://github.com/protonemedia/laravel-splade-breeze/issues",
+                "source": "https://github.com/protonemedia/laravel-splade-breeze"
+            },
+            "abandoned": true,
+            "time": "2024-03-19T11:20:50+00:00"
+        },
+        {
             "name": "psr/clock",
             "version": "1.0.0",
             "source": {
@@ -3167,6 +3315,140 @@
                 }
             ],
             "time": "2024-04-27T21:32:50+00:00"
+        },
+        {
+            "name": "spatie/laravel-package-tools",
+            "version": "1.92.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/laravel-package-tools.git",
+                "reference": "d20b1969f836d210459b78683d85c9cd5c5f508c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/laravel-package-tools/zipball/d20b1969f836d210459b78683d85c9cd5c5f508c",
+                "reference": "d20b1969f836d210459b78683d85c9cd5c5f508c",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/contracts": "^9.28|^10.0|^11.0|^12.0",
+                "php": "^8.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.5",
+                "orchestra/testbench": "^7.7|^8.0|^9.0|^10.0",
+                "pestphp/pest": "^1.23|^2.1|^3.1",
+                "phpunit/php-code-coverage": "^9.0|^10.0|^11.0",
+                "phpunit/phpunit": "^9.5.24|^10.5|^11.5",
+                "spatie/pest-plugin-test-time": "^1.1|^2.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Spatie\\LaravelPackageTools\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Freek Van der Herten",
+                    "email": "freek@spatie.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Tools for creating Laravel packages",
+            "homepage": "https://github.com/spatie/laravel-package-tools",
+            "keywords": [
+                "laravel-package-tools",
+                "spatie"
+            ],
+            "support": {
+                "issues": "https://github.com/spatie/laravel-package-tools/issues",
+                "source": "https://github.com/spatie/laravel-package-tools/tree/1.92.4"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/spatie",
+                    "type": "github"
+                }
+            ],
+            "time": "2025-04-11T15:27:14+00:00"
+        },
+        {
+            "name": "spatie/laravel-query-builder",
+            "version": "6.3.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/laravel-query-builder.git",
+                "reference": "3675f7bace346dc5243f58fa7c531e36471200f4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/laravel-query-builder/zipball/3675f7bace346dc5243f58fa7c531e36471200f4",
+                "reference": "3675f7bace346dc5243f58fa7c531e36471200f4",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/database": "^10.0|^11.0|^12.0",
+                "illuminate/http": "^10.0|^11.0|^12.0",
+                "illuminate/support": "^10.0|^11.0|^12.0",
+                "php": "^8.2",
+                "spatie/laravel-package-tools": "^1.11"
+            },
+            "require-dev": {
+                "ext-json": "*",
+                "mockery/mockery": "^1.4",
+                "orchestra/testbench": "^7.0|^8.0|^10.0",
+                "pestphp/pest": "^2.0|^3.7",
+                "phpunit/phpunit": "^10.0|^11.5.3",
+                "spatie/invade": "^2.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Spatie\\QueryBuilder\\QueryBuilderServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spatie\\QueryBuilder\\": "src",
+                    "Spatie\\QueryBuilder\\Database\\Factories\\": "database/factories"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Alex Vanderbist",
+                    "email": "alex@spatie.be",
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Easily build Eloquent queries from API requests",
+            "homepage": "https://github.com/spatie/laravel-query-builder",
+            "keywords": [
+                "laravel-query-builder",
+                "spatie"
+            ],
+            "support": {
+                "issues": "https://github.com/spatie/laravel-query-builder/issues",
+                "source": "https://github.com/spatie/laravel-query-builder"
+            },
+            "funding": [
+                {
+                    "url": "https://spatie.be/open-source/support-us",
+                    "type": "custom"
+                }
+            ],
+            "time": "2025-04-16T07:30:03+00:00"
         },
         {
             "name": "symfony/console",
@@ -8176,12 +8458,12 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {},
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
         "php": "^8.1"
     },
-    "platform-dev": [],
+    "platform-dev": {},
     "plugin-api-version": "2.6.0"
 }
