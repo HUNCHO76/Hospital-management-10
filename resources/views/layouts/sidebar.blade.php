@@ -122,17 +122,36 @@
       </li>
       <li class="nav-item">
           <a class="nav-link" data-bs-toggle="collapse" href="#departments" aria-expanded="false" aria-controls="departments">
-              <span class="menu-title">Departments</span>
+              <span class="menu-title">Manage Department</span>
               <i class="mdi mdi-hospital-building menu-icon"></i>
           </a>
           <div class="collapse" id="departments">
               <ul class="nav flex-column sub-menu">
                   <li class="nav-item">
-                      <a class="nav-link" href="pages/departments/manage.html">Add/Edit Departments</a>
-                  </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('department.create') }}">Create Department</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('department.index') }}">Department Table</a>
+                    </li>
               </ul>
           </div>
-      </li>
+    <li class="nav-item">
+        <a class="nav-link" data-bs-toggle="collapse" href="#manage-doctors" aria-expanded="false" aria-controls="manage-doctors">
+            <span class="menu-title">Manage Doctors</span>
+            <i class="mdi mdi-doctor menu-icon"></i>
+        </a>
+        <div class="collapse" id="manage-doctors">
+            <ul class="nav flex-column sub-menu">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('doctor.create') }}">Create Doctor</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('doctor.index') }}">Doctors Table</a>
+                </li>
+            </ul>
+        </div>
+    </li>
       <li class="nav-item">
           <a class="nav-link" data-bs-toggle="collapse" href="#rooms-beds" aria-expanded="false" aria-controls="rooms-beds">
               <span class="menu-title">Rooms & Beds</span>
