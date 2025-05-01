@@ -212,10 +212,13 @@
               <div class="collapse" id="patient-monitoring">
                 <ul class="nav flex-column sub-menu">
                   <li class="nav-item">
-                    <a class="nav-link" href="pages/nurse/vitals.html">Vitals</a>
+                    <a class="nav-link" href="{{ route('patient.index') }}">Patient</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="pages/nurse/reports.html">Reports</a>
+                    <a class="nav-link" href="{{ route('pre_tests.index') }}">Patient PreTest</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{ route('doctor_patient.index') }}">Patient Assigned</a>
                   </li>
                 </ul>
               </div>
@@ -261,7 +264,7 @@
                       <a class="nav-link" href="pages/doctor/my-appointments.html">My Appointments</a>
                   </li>
                   <li class="nav-item">
-                      <a class="nav-link" href="pages/doctor/patient-records.html">Patient Records</a>
+                      <a class="nav-link" href="{{ route('assigned_patients') }}">Patient Records</a>
                   </li>
                   <li class="nav-item">
                       <a class="nav-link" href="pages/doctor/write-prescriptions.html">Write Prescriptions</a>

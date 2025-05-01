@@ -1,47 +1,42 @@
+<!-- filepath: c:\xampp\htdocs\Hospital-management-10\resources\views\DoctorPatient\index.blade.php -->
 <x-app-layout>
     <div class="container mt-4">
-        <h2 class="mb-4">User Management</h2>
+        <h2 class="mb-4">Doctor-Patient Management</h2>
         <div class="mb-3">
-            <input type="text" id="searchInput" class="form-control" placeholder="Search users...">
+            <input type="text" id="searchInput" class="form-control" placeholder="Search doctor-patient assignments...">
         </div>
         <table class="table table-striped custom-table datatable">
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>Reg No</th>
-                    <th>Full Name</th>
-                    <th>Age</th>
-                    <th>Gender</th>
-                    <th>Occupation</th>
-                    <th>Phone</th>
+                    <th>Patient Name</th>
+                    <th>Doctor Name</th>
+                    <th>Specialization</th>
                     <th class="text-right">Action</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($patients as $data)
+                @foreach ($doctorPatients as $assignment)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
-                    <td>{{ $data->registration_no }}</td>
-                    <td>{{ $data->full_name }}</td>
-                    <td>{{ $data->age }}</td>
-                    <td>{{ $data->gender }}</td>
-                    <td>{{ $data->occupation }}</td>
-                    <td>{{ $data->phone }}</td>
+                    <td>{{ $assignment->pretest->patient->full_name }}</td>
+                    <td>{{ $assignment->doctor->user->FirstName }} {{ $assignment->doctor->user->LastName }}</td>
+                    <td>{{ $assignment->doctor->specialization }}</td>
                     <td>
                         <!-- Action Dropdown -->
                         <div class="dropdown">
-                            <button class="btn btn-primary btn-sm" type="button" id="actionMenu{{ $data->id }}" data-bs-toggle="dropdown" aria-expanded="false">
+                            <button class="btn btn-primary btn-sm" type="button" id="actionMenu{{ $assignment->id }}" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="mdi mdi-dots-vertical"></i>
                             </button>
-                            <ul class="dropdown-menu" aria-labelledby="actionMenu{{ $data->id }}">
+                            <ul class="dropdown-menu" aria-labelledby="actionMenu{{ $assignment->id }}">
                                 <li>
-                                    <a href="{{ route('pre_tests.create', $data) }}" class="dropdown-item">PreTest</a>
+                                    <a href="{{ route('doctor_patient.show', $assignment->id) }}" class="dropdown-item">View</a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('patient.edit', $data->id) }}" class="dropdown-item">Edit</a>
+                                    <a href="{{ route('doctor_patient.edit', $assignment->id) }}" class="dropdown-item">Edit</a>
                                 </li>
                                 <li>
-                                    <form action="{{ route('patient.delete', $data->id) }}" method="POST" class="d-inline">
+                                    <form action="{{ route('doctor_patient.delete', $assignment->id) }}" method="POST" class="d-inline">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="dropdown-item text-danger" onclick="return confirm('Are you sure?')">Delete</button>
@@ -55,7 +50,7 @@
             </tbody>
         </table>
         <div class="d-flex justify-content-center mt-4">
-            {{ $patients->links() }}
+            {{ $doctorPatients->links() }}
         </div>
     </div>
 

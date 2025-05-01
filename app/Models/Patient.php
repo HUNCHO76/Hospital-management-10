@@ -11,7 +11,7 @@ class Patient extends Model
 
     protected $fillable = [
         'registration_no',
-      'FullName',
+      'full_name',
       'age',
        'gender',
       'marital_status',
@@ -20,4 +20,21 @@ class Patient extends Model
       'country',
       'payment_method'
     ];
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+    public function preTest()
+    {
+        return $this->hasMany(Pre_test::class);
+    }
+    public function doctor()
+    {
+        return $this->hasMany(Doctor::class);
+    }
+    public function appointment()
+    {
+        return $this->hasMany(Appointment::class);
+    }
+
 }

@@ -47,7 +47,7 @@ class PatientController extends Controller
         // Insert data into the patients table
         $patient = new Patient();
         $patient->registration_no = $request->registration_no;
-        $patient->FullName = $request->FullName;
+        $patient->full_name = $request->full_name;
         $patient->user_id = auth()->id();
         // $patient->Date_of_birth = $request->Date_of_birth;
         $patient->age = $request->age;
@@ -79,7 +79,7 @@ class PatientController extends Controller
      */
     public function edit(Patient $patient)
     {
-        
+
     }
 
     /**

@@ -4,14 +4,20 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BillController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\DoctorController;
+use App\Http\Controllers\CheckupController;
 use App\Http\Controllers\PatientController;
+use App\Http\Controllers\PreTestController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdmissionController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\AppointmentController;
+use App\Http\Controllers\AssignedPatientController;
 use App\Http\Controllers\PrescriptionController;
+use App\Http\Controllers\DoctorPatientController;
+use App\Http\Controllers\CheckupDiseasesController;
+use App\Http\Controllers\SampleTestResultsController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 
 /*
@@ -49,6 +55,7 @@ Route::get('/', function () {
 
 Route::middleware(['auth', 'verified'])->group(function(){
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/AssignedPatient/index', [AssignedPatientController::class, 'index'])->name('assigned_patients');
 });
 
 Route::middleware('auth')->group(function () {
@@ -155,6 +162,78 @@ Route::prefix('/admission')->name('admission.')->group(function () {
         Route::post('/edit/{id?}', [AdmissionController::class, 'update'])->name('update');
         Route::get('/delete/{id?}', [AdmissionController::class, 'destroy'])->name('delete');
     });
+    Route::prefix('/checkup')->name('checkup.')->group(function () {
+        Route::get('/create', [CheckupController::class, 'create'])->name('create');
+        Route::post('/create', [CheckupController::class, 'store'])->name('store');
+
+        Route::get('/index', [CheckupController::class, 'index'])->name('index');
+
+        Route::get('/show/{id?}', [CheckupController::class, 'show'])->name('show');
+        Route::get('/edit/{id?}', [CheckupController::class, 'edit'])->name('edit');
+        Route::post('/edit/{id?}', [CheckupController::class, 'update'])->name('update');
+        Route::get('/delete/{id?}', [CheckupController::class, 'destroy'])->name('delete');
+    });
+
+    Route::prefix('/sample_test_result')->name('sample_test_result.')->group(function () {
+        Route::get('/create', [SampleTestResultsController::class, 'create'])->name('create');
+        Route::post('/create', [SampleTestResultsController::class, 'store'])->name('store');
+
+        Route::get('/index', [SampleTestResultsController::class, 'index'])->name('index');
+
+        Route::get('/show/{id?}', [SampleTestResultsController::class, 'show'])->name('show');
+        Route::get('/edit/{id?}', [SampleTestResultsController::class, 'edit'])->name('edit');
+        Route::post('/edit/{id?}', [SampleTestResultsController::class, 'update'])->name('update');
+        Route::get('/delete/{id?}', [SampleTestResultsController::class, 'destroy'])->name('delete');
+    });
+    Route::prefix('/pre_tests')->name('pre_tests.')->group(function () {
+        Route::get('/create{id?}', [PreTestController::class, 'create'])->name('create');
+        Route::post('/create', [PreTestController::class, 'store'])->name('store');
+
+        Route::get('/index', [PreTestController::class, 'index'])->name('index');
+
+        Route::get('/show/{id?}', [PreTestController::class, 'show'])->name('show');
+        Route::get('/edit/{id?}', [PreTestController::class, 'edit'])->name('edit');
+        Route::post('/edit/{id?}', [PreTestController::class, 'update'])->name('update');
+        Route::get('/delete/{id?}', [PreTestController::class, 'destroy'])->name('delete');
+    });
+
+    Route::prefix('/checkup_diseases')->name('checkup_diseases.')->group(function () {
+        Route::get('/create', [CheckupDiseasesController::class, 'create'])->name('create');
+        Route::post('/create', [CheckupDiseasesController::class, 'store'])->name('store');
+
+        Route::get('/index', [CheckupDiseasesController::class, 'index'])->name('index');
+
+        Route::get('/show/{id?}', [CheckupDiseasesController::class, 'show'])->name('show');
+        Route::get('/edit/{id?}', [CheckupDiseasesController::class, 'edit'])->name('edit');
+        Route::post('/edit/{id?}', [CheckupDiseasesController::class, 'update'])->name('update');
+        Route::get('/delete/{id?}', [CheckupDiseasesController::class, 'destroy'])->name('delete');
+    });
+
+    Route::prefix('/sample_test_results')->name('sample_test_results.')->group(function () {
+        Route::get('/create', [SampleTestResultsController::class, 'create'])->name('create');
+        Route::post('/create', [SampleTestResultsController::class, 'store'])->name('store');
+
+        Route::get('/index', [SampleTestResultsController::class, 'index'])->name('index');
+
+        Route::get('/show/{id?}', [SampleTestResultsController::class, 'show'])->name('show');
+        Route::get('/edit/{id?}', [SampleTestResultsController::class, 'edit'])->name('edit');
+        Route::post('/edit/{id?}', [SampleTestResultsController::class, 'update'])->name('update');
+        Route::get('/delete/{id?}', [SampleTestResultsController::class, 'destroy'])->name('delete');
+    });
+
+Route::prefix('/doctor_patient')->name('doctor_patient.')->group(function () {
+        Route::get('/create{id?}', [DoctorPatientController::class, 'create'])->name('create');
+        Route::post('/create', [DoctorPatientController::class, 'store'])->name('store');
+
+        Route::get('/index', [DoctorPatientController::class, 'index'])->name('index');
+
+        Route::get('/show/{id?}', [DoctorPatientController::class, 'show'])->name('show');
+        Route::get('/edit/{id?}', [DoctorPatientController::class, 'edit'])->name('edit');
+        Route::post('/edit/{id?}', [DoctorPatientController::class, 'update'])->name('update');
+        Route::get('/delete/{id?}', [DoctorPatientController::class, 'destroy'])->name('delete');
+
+    });
+
 
 
 

@@ -20,8 +20,8 @@
                                         @enderror
                                     </div>
                                     <div class="mb-3">
-                                        <label for="FullName" class="form-label">Full Name</label>
-                                        <input type="text" name="FullName" class="form-control @error('FullName') is-invalid @enderror" id="FullName" placeholder="Enter Full Name" value="{{ old('FullName') }}">
+                                        <label for="full_name" class="form-label">Full Name</label>
+                                        <input type="text" name="full_name" class="form-control @error('full_name') is-invalid @enderror" id="FullName" placeholder="Enter Full Name" value="{{ old('full_name') }}">
                                         @error('FullName')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
