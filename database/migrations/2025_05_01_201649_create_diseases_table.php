@@ -11,13 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('checkups', function (Blueprint $table) {
+        Schema::create('diseases', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('pretest_id')->constrained('pretests');
-            $table->foreignId('doctor_id')->constrained('doctors');
-            $table->string('disease');
-            $table->enum('status', ['completed', 'inprogress', 'pending'])->default('pending');
-            
+            $table->string('name');
             $table->timestamps();
         });
     }
@@ -27,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('checkups');
+        Schema::dropIfExists('diseases');
     }
 };

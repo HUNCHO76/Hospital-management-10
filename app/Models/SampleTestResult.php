@@ -5,20 +5,20 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Doctor_Patient extends Model
+class SampleTestResult extends Model
 {
     use HasFactory;
+
     protected $fillable = [
-        'doctor_id',
-        'pretest_id',
+        'patient_id',
+        'checkup_id',
+        'status',
+        'percentage',
+        'remarks',
     ];
-    public function doctor()
+    public function checkup()
     {
-        return $this->belongsTo(Doctor::class);
-    }
-    public function pretest()
-    {
-        return $this->belongsTo(Pre_test::class);
+        return $this->belongsTo(checkup::class);
     }
     public function patient()
     {

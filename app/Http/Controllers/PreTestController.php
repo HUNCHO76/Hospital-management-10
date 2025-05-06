@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Patient;
+use App\Models\Pretest;
 use App\Models\Pre_test;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -15,7 +16,7 @@ class PreTestController extends Controller
     public function index()
     {
         // Fetch all pre-tests
-        $pre_tests = Pre_test::with('patient')->paginate(10);
+        $pre_tests = Pretest::with('patient')->paginate(10);
         return view('pre_tests.index', compact('pre_tests'));
     }
 

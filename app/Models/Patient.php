@@ -26,7 +26,7 @@ class Patient extends Model
     }
     public function preTest()
     {
-        return $this->hasMany(Pre_test::class);
+        return $this->hasMany(Pretest::class);
     }
     public function doctor()
     {
@@ -35,6 +35,14 @@ class Patient extends Model
     public function appointment()
     {
         return $this->hasMany(Appointment::class);
+    }
+    public function checkup()
+    {
+        return $this->hasMany(checkup::class);
+    }
+    public function sampleTestResult()
+    {
+        return $this->hasMany(SampleTestResult::class);
     }
 
 }

@@ -4,9 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Doctor;
 use App\Models\Patient;
+use App\Models\Pretest;
 use App\Models\Pre_test;
 use Illuminate\Http\Request;
+use App\Models\DoctorPatient;
 use App\Models\Doctor_Patient;
+use App\Http\Controllers\Controller;
 
 class DoctorPatientController extends Controller
 {
@@ -15,7 +18,7 @@ class DoctorPatientController extends Controller
      */
     public function index()
     {
-         $doctorPatients = Doctor_Patient::paginate(10);
+         $doctorPatients = DoctorPatient::paginate(10);
         return view('DoctorPatient.index', compact('doctorPatients'));
     }
 
@@ -24,7 +27,7 @@ class DoctorPatientController extends Controller
      */
     public function create($id)
     {
-        $pretest = Pre_test::findOrFail($id);
+        $pretest = Pretest::findOrFail($id);
         $doctors = Doctor::all();
         return view('DoctorPatient.create', compact('pretest', 'doctors'));
     }
@@ -39,7 +42,7 @@ class DoctorPatientController extends Controller
             'doctor_id' => 'required|exists:doctors,id',
         ]);
         // dd($request);
-        Doctor_Patient::create([
+        DoctorPatient::create([
             'pretest_id' => $request->pretest_id,
             'doctor_id' => $request->doctor_id,
         ]);
@@ -50,7 +53,7 @@ class DoctorPatientController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Doctor_Patient $doctor_Patient)
+    public function show(DoctorPatient $doctor_Patient)
     {
         //
     }
@@ -58,7 +61,7 @@ class DoctorPatientController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Doctor_Patient $doctor_Patient)
+    public function edit(DoctorPatient $doctor_Patient)
     {
         //
     }
@@ -66,7 +69,7 @@ class DoctorPatientController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Doctor_Patient $doctor_Patient)
+    public function update(Request $request, DoctorPatient $doctor_Patient)
     {
         //
     }
@@ -74,7 +77,7 @@ class DoctorPatientController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Doctor_Patient $doctor_Patient)
+    public function destroy(DoctorPatient $doctor_Patient)
     {
         //
     }

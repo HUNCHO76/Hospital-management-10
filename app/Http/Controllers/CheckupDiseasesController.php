@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\checkup_diseases;
+use App\Models\checkup;
+use App\Models\Disease;
 use Illuminate\Http\Request;
+use App\Models\checkup_diseases;
 
 class CheckupDiseasesController extends Controller
 {
@@ -12,31 +14,26 @@ class CheckupDiseasesController extends Controller
      */
     public function index()
     {
-        //
+        $patients = checkup::orderBy('created_at', 'desc')
+            ->get()
+            ->unique('patient_id');
+        return view('LabCheckUp.index', compact('patients'));
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+   
 
     /**
      * Display the specified resource.
      */
-    public function show(checkup_diseases $checkup_diseases)
+    public function show(checkup_diseases $checkup_diseases, $id)
     {
-        //
+        $checkups = checkup::find($id)->get();
+        $patient = Checkup::find($id)->get();
+        // dd($checkup);
+        return view('LabCheckUp.show', compact('checkups', 'patient'));
     }
 
     /**

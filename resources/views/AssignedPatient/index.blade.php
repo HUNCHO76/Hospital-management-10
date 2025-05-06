@@ -10,6 +10,8 @@
                     <tr>
                         <th>#</th>
                         <th>Patient</th>
+                        <th>Height</th>
+                        <th>Weight</th>
                         <th>BP</th>
                         <th>Temp (°C)</th>
                         <th>Pulse</th>
@@ -18,29 +20,32 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse($assignedPatients as $preTest)
+                    @forelse($assignedPatients as $assignment)
                     <tr>
                         <td>{{ $loop->iteration }}</td>
-                        <td>{{ $preTest->full_name }}</td>
-                        <td>{{ $preTest->blood_pressure }}</td>
-                        <td>{{ $preTest->temperature }}</td>
-                        <td>{{ $preTest->pulse_rate }}</td>
-                        <td>{{ $preTest->respiration_rate }}</td>
+                        {{-- Check if the assignment has a pretest --}}
+                        <td>{{ $assignment->pretest->patient->full_name }}</td>
+                        <td>{{ $assignment->pretest->height }} cm</td>
+                        <td>{{ $assignment->pretest->weight }} kg</td>
+                        <td>{{ $assignment->pretest->blood_pressure }}</td>
+                        <td>{{ $assignment->pretest->temperature }} °C</td>
+                        <td>{{ $assignment->pretest->pulse_rate }}</td>
+                        <td>{{ $assignment->pretest->respiration_rate }}</td>
                         <td>
                             <!-- Action Dropdown -->
                             <div class="dropdown">
-                                <button class="btn btn-primary btn-sm" type="button" id="actionMenu{{ $preTest->id }}" data-bs-toggle="dropdown" aria-expanded="false">
+                                <button class="btn btn-primary btn-sm" type="button" id="actionMenu{{ $assignment->id }}" data-bs-toggle="dropdown" aria-expanded="false">
                                     <i class="mdi mdi-dots-vertical"></i>
                                 </button>
-                                <ul class="dropdown-menu" aria-labelledby="actionMenu{{ $preTest->id }}">
+                                <ul class="dropdown-menu" aria-labelledby="actionMenu{{ $assignment->id }}">
                                     <li>
-                                        <a href="{{ route('doctor_patient.create', $preTest->id) }}" class="dropdown-item" style="color: black;">AssignDoctor</a>
+                                        <a href="{{ url('checkup/create/' . $assignment->id) }}" class="dropdown-item" style="color: black;">CheckUp</a>
                                     </li>
                                     <li>
-                                        <a href="{{ route('pre_tests.edit', $preTest->id) }}" class="dropdown-item">Edit</a>
+                                        <a href="{{ route('checkup.edit', $assignment->id) }}" class="dropdown-item">Edit</a>
                                     </li>
                                     <li>
-                                        <form action="{{ route('pre_tests.delete', $preTest->id) }}" method="POST" class="d-inline">
+                                        <form action="{{ route('checkup.delete', $assignment->id) }}" method="POST" class="d-inline">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="dropdown-item text-danger" onclick="return confirm('Are you sure?')">Delete</button>

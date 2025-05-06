@@ -57,6 +57,29 @@ Route::middleware(['auth', 'verified'])->group(function(){
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/AssignedPatient/index', [AssignedPatientController::class, 'index'])->name('assigned_patients');
 });
+Route::middleware('auth')->prefix('/checkup')->name('checkup.')->group(function () {
+    Route::get('/create/{id}', [CheckupController::class, 'create'])->name('create');
+    Route::post('/create', [CheckupController::class, 'store'])->name('store');
+
+    Route::get('/index', [CheckupController::class, 'index'])->name('index');
+
+    Route::get('/show/{id?}', [CheckupController::class, 'show'])->name('show');
+    Route::get('/edit/{id?}', [CheckupController::class, 'edit'])->name('edit');
+    Route::post('/edit/{id?}', [CheckupController::class, 'update'])->name('update');
+    Route::get('/delete/{id?}', [CheckupController::class, 'destroy'])->name('delete');
+});
+
+Route::middleware('auth')->prefix('/LabCheckUp')->name('lab.')->group(function(){
+    Route::get('/create/{id?}', [SampleTestResultsController::class, 'create'])->name('create');
+    Route::post('/create', [SampleTestResultsController::class, 'store'])->name('store');
+
+    Route::get('/index', [SampleTestResultsController::class, 'index'])->name('index');
+
+    Route::get('/show/{id?}', [SampleTestResultsController::class, 'show'])->name('show');
+    Route::get('/edit/{id?}', [SampleTestResultsController::class, 'edit'])->name('edit');
+    // Route::post('/edit/{id?}', [CheckupDiseasesController::class, 'update'])->name('update');
+    Route::get('/delete/{id?}', [SampleTestResultsController::class, 'destroy'])->name('delete');
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

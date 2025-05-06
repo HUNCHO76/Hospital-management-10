@@ -15,11 +15,9 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('patient_id');
             $table->unsignedBigInteger('checkup_id')->nullable(); // Optional link to a checkup
-            $table->string('test_type');
-            $table->string('result');
-            $table->date('test_date');
+            $table->string('status');
+            $table->integer('percentage');
             $table->text('remarks')->nullable();
-
             $table->foreign('patient_id')->references('id')->on('patients')->onDelete('cascade');
             $table->foreign('checkup_id')->references('id')->on('checkups')->onDelete('set null');
             $table->timestamps();

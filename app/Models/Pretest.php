@@ -2,12 +2,10 @@
 
 namespace App\Models;
 
-use App\Models\User;
-use App\Models\Patient;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
-class Pre_test extends Model
+class Pretest extends Model
 {
     use HasFactory;
 
@@ -34,6 +32,6 @@ class Pre_test extends Model
     }
     public function doctorPatients()
     {
-        return $this->hasMany(Doctor_Patient::class);
+        return $this->hasMany(DoctorPatient::class);
     }
 }

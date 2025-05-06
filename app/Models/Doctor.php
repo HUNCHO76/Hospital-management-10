@@ -36,5 +36,13 @@ class Doctor extends Model
     {
         return $this->hasMany(Patient::class);
     }
-    
+    public function checkups()
+    {
+        return $this->hasMany(Checkup::class);
+    }
+    public function doctorpatients()
+    {
+        return $this->hasMany(DoctorPatient::class);
+    }
+
 }

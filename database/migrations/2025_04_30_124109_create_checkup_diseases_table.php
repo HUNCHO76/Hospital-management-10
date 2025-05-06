@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('checkup_diseases', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('checkup_id')->constrained()->onDelete('cascade');
+            $table->foreignId('checkup_id')->constrained('checkups')->onDelete('cascade');
             $table->string('disease_name');
             $table->decimal('availability_percentage', 5, 2);
             $table->timestamps();

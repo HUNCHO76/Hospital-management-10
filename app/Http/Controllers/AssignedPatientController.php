@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Doctor_Patient;
 use DB;
 use Illuminate\Http\Request;
+use App\Models\DoctorPatient;
+use App\Models\Doctor_Patient;
 
 class AssignedPatientController extends Controller
 {
@@ -13,13 +14,10 @@ class AssignedPatientController extends Controller
      */
     public function index()
     {
-        // Fetch the assigned patients from the database
-        $assignedPatients = Doctor_Patient::
-            join('pre_tests', 'doctor__patients.pretest_id', '=', 'pre_tests.id')
-            ->join('patients', 'pre_tests.patient_id', '=', 'patients.id')
-            ->where('doctor__patients.doctor_id', '=', 1)
-            ->select('patients.*', 'pre_tests.*')
-            ->paginate(10);
+    // Retrieve data with patient info and pretest results
+    $assignedPatients = DoctorPatient::with([
+        'pretest.patient', // includes patient info
+    ])->paginate(10);
             // dd($assignedPatients);
         return view('AssignedPatient.index', compact('assignedPatients'));
     }
