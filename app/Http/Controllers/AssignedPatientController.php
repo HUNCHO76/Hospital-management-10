@@ -6,6 +6,7 @@ use DB;
 use Illuminate\Http\Request;
 use App\Models\DoctorPatient;
 use App\Models\Doctor_Patient;
+use App\Models\Doctor;
 
 class AssignedPatientController extends Controller
 {
@@ -14,10 +15,18 @@ class AssignedPatientController extends Controller
      */
     public function index()
     {
-    // Retrieve data with patient info and pretest results
-    $assignedPatients = DoctorPatient::with([
-        'pretest.patient', // includes patient info
-    ])->paginate(10);
+        // Get the currently logged-in doctor
+        $doctor = Doctor::where('user_id', auth()->id())->first();
+        
+        if (!$doctor) {
+            abort(403, 'Unauthorized - No doctor profile found');
+        }
+        
+        // Retrieve data with patient info and pretest results for this doctor only
+        $assignedPatients = DoctorPatient::with([
+            'pretest.patient', // includes patient info
+        ])->where('doctor_id', $doctor->id)
+          ->paginate(10);
             // dd($assignedPatients);
         return view('AssignedPatient.index', compact('assignedPatients'));
     }

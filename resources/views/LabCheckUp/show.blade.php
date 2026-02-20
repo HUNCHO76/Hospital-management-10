@@ -5,14 +5,13 @@
         <form action="{{ route('lab.store') }}" method="POST">
             @csrf
             
-            @foreach($checkups as $disease)
             <div class="row">
                 <div class="col-md-6">
                     <div class="mb-3">
-                        <label for="patient_id" class="form-label">Patient Name: {{ $disease->patient->full_name }}</label>
-                        <input type="hidden" name="patient_id" value="{{ $disease->patient_id }}">
-                        <input type="hidden" name="checkup_id" value="{{ $disease->id }}">
-                        <input type="text" class="form-control" value="{{ $disease->patient->full_name }}" readonly>
+                        <label for="patient_id" class="form-label">Patient Name: {{ $checkup->patient?->full_name ?? 'N/A' }}</label>
+                        <input type="hidden" name="patient_id" value="{{ $checkup->pretest->patient_id }}">
+                        <input type="hidden" name="checkup_id" value="{{ $checkup->id }}">
+                        <input type="text" class="form-control" value="{{ $checkup->patient?->full_name ?? 'N/A' }}" readonly>
                     </div>
                 </div>
             </div>
@@ -21,7 +20,7 @@
                 <div class="row g-3 mb-3 result-group">
                     <div class="col-md-5">
                         <label class="form-label">Disease</label>
-                        <input type="text" name="results[0][disease]" class="form-control" value="{{ $disease->disease }}" readonly>
+                        <input type="text" name="results[0][disease]" class="form-control" value="{{ $checkup->disease }}" readonly>
                     </div>
                     <div class="col-md-2">
                         <label class="form-label">Status</label>
@@ -38,7 +37,6 @@
                     </div>
                 </div>
             </div>
-            @endforeach
 
             <button type="button" class="btn btn-secondary mb-3" id="add-result">Add Another Test</button>
 

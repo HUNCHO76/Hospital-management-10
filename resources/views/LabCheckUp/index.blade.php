@@ -40,8 +40,8 @@
                 @foreach($patients as $patient)
                     <tr>
                         <td>{{ $loop->iteration }}</td>
-                        <td>{{ $patient->patient->full_name }}</td>
-                        <td>{{ $patient->doctor->user->FirstName }}</td>
+                        <td>{{ $patient->patient?->full_name ?? 'N/A' }}</td>
+                        <td>{{ $patient->doctor?->user?->FirstName ?? 'N/A' }}</td>
                         {{-- <td>{{ $patient->disease }}</td> --}}
                         <td>       
                          <span class="badge 
@@ -60,7 +60,7 @@
                                 </button>
                                 <ul class="dropdown-menu" aria-labelledby="actionMenu{{ $patient->id }}">
                                     <li>
-                                        <a href="{{ route('lab.show', $patient->patient_id) }}" class="dropdown-item">View</a>
+                                        <a href="{{ route('lab.show', $patient->id) }}" class="dropdown-item">View</a>
                                     </li>
                                     <li>
                                         <a href="{{ route('lab.edit', $patient->id) }}" class="dropdown-item">Edit</a>

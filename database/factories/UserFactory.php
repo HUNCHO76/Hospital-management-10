@@ -45,4 +45,59 @@ class UserFactory extends Factory
             'email_verified_at' => null,
         ]);
     }
+
+    /**
+     * Create a doctor user.
+     */
+    public function doctor(): static
+    {
+        return $this->state(fn (array $attributes) => [
+            'Role' => 'doctor',
+            'status' => 1,
+        ]);
+    }
+
+    /**
+     * Create a nurse user.
+     */
+    public function nurse(): static
+    {
+        return $this->state(fn (array $attributes) => [
+            'Role' => 'nurse',
+            'status' => 1,
+        ]);
+    }
+
+    /**
+     * Create a pharmacist user.
+     */
+    public function pharmacist(): static
+    {
+        return $this->state(fn (array $attributes) => [
+            'Role' => 'pharmacist',
+            'status' => 1,
+        ]);
+    }
+
+    /**
+     * Create a receptionist user.
+     */
+    public function receptionist(): static
+    {
+        return $this->state(fn (array $attributes) => [
+            'Role' => 'receptionist',
+            'status' => 1,
+        ]);
+    }
+
+    /**
+     * Create a lab technician user.
+     */
+    public function labTechnician(): static
+    {
+        return $this->state(fn (array $attributes) => [
+            'Role' => 'Lab Technician',
+            'status' => 1,
+        ]);
+    }
 }

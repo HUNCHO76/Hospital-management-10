@@ -11,18 +11,21 @@ class DoctorPatient extends Model
 
     protected $fillable = [
         'doctor_id',
-        'pretest_id',
+        'patient_id',
+        'assigned_at',
     ];
-    public function doctors()
+    public function doctor()
     {
         return $this->belongsTo(Doctor::class);
     }
-    public function pretest()
-    {
-        return $this->belongsTo(PreTest::class);
-    }
+    
     public function patient()
     {
         return $this->belongsTo(Patient::class);
+    }
+    
+    public function pretest()
+    {
+        return $this->hasOne(Pretest::class, 'patient_id', 'patient_id')->latest();
     }
 }

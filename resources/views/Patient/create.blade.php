@@ -13,16 +13,9 @@
                                 <!-- Left Column -->
                                 <div class="col-md-6">
                                     <div class="mb-3">
-                                        <label for="registration_no" class="form-label">Registration No</label>
-                                        <input type="text" name="registration_no" class="form-control @error('registration_no') is-invalid @enderror" id="registration_no" placeholder="Enter Registration No" value="{{ old('registration_no') }}">
-                                        @error('registration_no')
-                                            <div class="invalid-feedback">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-                                    <div class="mb-3">
                                         <label for="full_name" class="form-label">Full Name</label>
-                                        <input type="text" name="full_name" class="form-control @error('full_name') is-invalid @enderror" id="FullName" placeholder="Enter Full Name" value="{{ old('full_name') }}">
-                                        @error('FullName')
+                                        <input type="text" name="full_name" class="form-control @error('full_name') is-invalid @enderror" id="full_name" placeholder="Enter Full Name" value="{{ old('full_name') }}" required>
+                                        @error('full_name')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
                                     </div>
@@ -34,8 +27,26 @@
                                         @enderror
                                     </div>
                                     <div class="mb-3">
+                                        <label for="gender" class="form-label">Gender</label>
+                                        <select class="form-select @error('gender') is-invalid @enderror" name="gender" id="gender">
+                                            <option value="">Select Gender</option>
+                                            <option value="Male" {{ old('gender') == 'Male' ? 'selected' : '' }}>Male</option>
+                                            <option value="Female" {{ old('gender') == 'Female' ? 'selected' : '' }}>Female</option>
+                                            <option value="Other" {{ old('gender') == 'Other' ? 'selected' : '' }}>Other</option>
+                                        </select>
+                                        @error('gender')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                    <div class="mb-3">
                                         <label for="marital_status" class="form-label">Marital Status</label>
-                                        <input type="text" name="marital_status" class="form-control @error('marital_status') is-invalid @enderror" id="marital_status" placeholder="Enter Marital Status" value="{{ old('marital_status') }}">
+                                        <select class="form-select @error('marital_status') is-invalid @enderror" name="marital_status" id="marital_status">
+                                            <option value="">Select Status</option>
+                                            <option value="Single" {{ old('marital_status') == 'Single' ? 'selected' : '' }}>Single</option>
+                                            <option value="Married" {{ old('marital_status') == 'Married' ? 'selected' : '' }}>Married</option>
+                                            <option value="Divorced" {{ old('marital_status') == 'Divorced' ? 'selected' : '' }}>Divorced</option>
+                                            <option value="Widowed" {{ old('marital_status') == 'Widowed' ? 'selected' : '' }}>Widowed</option>
+                                        </select>
                                         @error('marital_status')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
@@ -60,22 +71,15 @@
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="country" class="form-label">Country</label>
-                                        <select class="form-select @error('country') is-invalid @enderror" name="country" id="country">
-                                            <option value="local" {{ old('country') == 'local' ? 'selected' : '' }}>Local</option>
-                                            <option value="nurse" {{ old('country') == 'nurse' ? 'selected' : '' }}>Nurse</option>
-                                            <option value="doctor" {{ old('country') == 'doctor' ? 'selected' : '' }}>Doctor</option>
-                                            <option value="admin" {{ old('country') == 'admin' ? 'selected' : '' }}>Admin</option>
-                                            <option value="receptionist" {{ old('country') == 'receptionist' ? 'selected' : '' }}>Receptionist</option>
-                                            <option value="pharmacist" {{ old('country') == 'pharmacist' ? 'selected' : '' }}>Pharmacist</option>
-                                            <option value="labtechnician" {{ old('country') == 'labtechnician' ? 'selected' : '' }}>Lab Technician</option>
-                                            <option value="accountant" {{ old('country') == 'accountant' ? 'selected' : '' }}>Accountant</option>
-                                            <option value="hr" {{ old('country') == 'hr' ? 'selected' : '' }}>HR</option>
-                                            <option value="radiologist" {{ old('country') == 'radiologist' ? 'selected' : '' }}>Radiologist</option>
-                                            <option value="physiotherapist" {{ old('country') == 'physiotherapist' ? 'selected' : '' }}>Physiotherapist</option>
-                                            <option value="dietitian" {{ old('country') == 'dietitian' ? 'selected' : '' }}>Dietitian</option>
-                                            <option value="technician" {{ old('country') == 'technician' ? 'selected' : '' }}>Technician</option>
-                                        </select>
+                                        <input type="text" name="country" class="form-control @error('country') is-invalid @enderror" id="country" placeholder="Enter Country" value="{{ old('country') }}">
                                         @error('country')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="home_phone" class="form-label">Home Phone</label>
+                                        <input type="tel" name="home_phone" class="form-control @error('home_phone') is-invalid @enderror" id="home_phone" placeholder="Enter Home Phone" value="{{ old('home_phone') }}">
+                                        @error('home_phone')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
                                     </div>

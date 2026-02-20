@@ -3,6 +3,17 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import "../css/app.css";
 import "@protonemedia/laravel-splade/dist/style.css";
 
+// Import Alpine.js for offline use
+import Alpine from 'alpinejs';
+import collapse from '@alpinejs/collapse';
+
+// Register Alpine plugins
+Alpine.plugin(collapse);
+
+// Initialize Alpine
+window.Alpine = Alpine;
+Alpine.start();
+
 import { createApp } from "vue/dist/vue.esm-bundler.js";
 import { renderSpladeApp, SpladePlugin } from "@protonemedia/laravel-splade";
 

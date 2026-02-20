@@ -30,8 +30,4 @@ class Pretest extends Model
     {
         return $this->belongsTo(User::class);
     }
-    public function doctorPatients()
-    {
-        return $this->hasMany(DoctorPatient::class);
-    }
 }

@@ -45,4 +45,9 @@ class Doctor extends Model
         return $this->hasMany(DoctorPatient::class);
     }
 
+    public function labOrders()
+    {
+        return $this->hasMany(LabOrder::class);
+    }
+
 }

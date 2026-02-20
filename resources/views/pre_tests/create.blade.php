@@ -19,11 +19,11 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="height" class="form-label">Height (cm)</label>
-                                        <input type="number" step="0.01" name="height" id="height" class="form-control" required>
+                                        <input type="number" step="0.01" name="height" id="height" class="form-control" min="0" max="300" placeholder="e.g., 170" required>
                                     </div>
                                     <div class="mb-3">
                                         <label for="weight" class="form-label">Weight (kg)</label>
-                                        <input type="number" step="0.01" name="weight" id="weight" class="form-control" required>
+                                        <input type="number" step="0.01" name="weight" id="weight" class="form-control" min="0" max="500" placeholder="e.g., 70" required>
                                     </div>
                                     <div class="mb-3">
                                         <label for="blood_pressure" class="form-label">Blood Pressure</label>
@@ -35,15 +35,16 @@
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="temperature" class="form-label">Temperature (°C)</label>
-                                        <input type="number" step="0.1" name="temperature" id="temperature" class="form-control" required>
+                                        <input type="number" step="0.1" name="temperature" id="temperature" class="form-control" min="30" max="45" placeholder="e.g., 36.6" required>
+                                        <small class="form-text text-muted">Normal: 36-37°C</small>
                                     </div>
                                     <div class="mb-3">
                                         <label for="pulse_rate" class="form-label">Pulse Rate (bpm)</label>
-                                        <input type="number" name="pulse_rate" id="pulse_rate" class="form-control" required>
+                                        <input type="number" name="pulse_rate" id="pulse_rate" class="form-control" min="30" max="200" placeholder="e.g., 72" required>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="respiration_rate" class="form-label">Respiration Rate</label>
-                                        <input type="number" name="respiration_rate" id="respiration_rate" class="form-control" required>
+                                        <label for="respiration_rate" class="form-label">Respiration Rate (breaths/min)</label>
+                                        <input type="number" name="respiration_rate" id="respiration_rate" class="form-control" min="5" max="60" placeholder="e.g., 16" required>
                                     </div>
                                     <div class="mb-3">
                                         <label for="notes" class="form-label">Additional Notes</label>

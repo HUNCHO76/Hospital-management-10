@@ -29,6 +29,33 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
+        $user = $request->user();
+
+        if ($user) {
+            $role = $user->Role;
+
+            switch ($role) {
+                case 'admin':
+                    return redirect()->route('admin.dashboard');
+                case 'doctor':
+                    return redirect()->route('doctor.dashboard');
+                case 'receptionist':
+                    return redirect()->route('receptionist.dashboard');
+                case 'nurse':
+                    return redirect()->route('nurse.dashboard');
+                case 'pharmacist':
+                    return redirect()->route('pharmacist.dashboard');
+                case 'lab_technician':
+                    return redirect()->route('lab.dashboard.role');
+                case 'cashier':
+                    return redirect()->route('cashier.dashboard');
+                case 'patient':
+                    return redirect()->route('patient.dashboard');
+                default:
+                    return redirect()->intended(RouteServiceProvider::HOME);
+            }
+        }
+
         return redirect()->intended(RouteServiceProvider::HOME);
     }
 

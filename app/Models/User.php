@@ -23,6 +23,8 @@ class User extends Authenticatable
         'LastName',
         'email',
         'password',
+        'Role',
+        'status',
     ];
 
     /**
@@ -47,5 +49,41 @@ class User extends Authenticatable
     public function doctor()
     {
         return $this->hasMany(Doctor::class);
+    }
+
+    public function uploadedDocuments()
+    {
+        return $this->hasMany(PatientDocument::class, 'uploaded_by');
+    }
+
+    /**
+     * Get the user's role in lowercase for routing
+     */
+    public function getRoleAttribute($value)
+    {
+        return $value;
+    }
+
+    /**
+     * Check if user has a specific role
+     */
+    public function hasRole($role)
+    {
+        return strtolower($this->attributes['Role'] ?? '') === strtolower($role);
+    }
+
+    public function enteredLabOrderItems()
+    {
+        return $this->hasMany(LabOrderItem::class, 'entered_by');
+    }
+
+    public function createdInvoices()
+    {
+        return $this->hasMany(Invoice::class, 'cashier_id');
+    }
+
+    public function receivedPayments()
+    {
+        return $this->hasMany(Payment::class, 'cashier_id');
     }
 }

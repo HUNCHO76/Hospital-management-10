@@ -45,4 +45,23 @@ class Patient extends Model
         return $this->hasMany(SampleTestResult::class);
     }
 
+    public function documents()
+    {
+        return $this->hasMany(PatientDocument::class);
+    }
+
+    public function medicalRecords()
+    {
+        return $this->hasMany(MedicalRecord::class);
+    }
+
+    public function labOrders()
+    {
+        return $this->hasMany(LabOrder::class);
+    }
+
+    public function invoices()
+    {
+        return $this->hasMany(Invoice::class);
+    }
 }

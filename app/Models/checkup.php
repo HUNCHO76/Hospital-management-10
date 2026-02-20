@@ -12,12 +12,22 @@ class checkup extends Model
         'pretest_id',
         'doctor_id',
         'disease',
+        'status',
         'notes',
     ];
+    
     public function patient()
     {
-        return $this->belongsTo(Patient::class);
+        return $this->hasOneThrough(
+            Patient::class,
+            Pretest::class,
+            'id',           // Foreign key on pretests table
+            'id',           // Foreign key on patients table
+            'pretest_id',   // Local key on checkups table
+            'patient_id'    // Local key on pretests table
+        );
     }
+    
     public function doctor()
     {
         return $this->belongsTo(Doctor::class);
@@ -38,5 +48,15 @@ class checkup extends Model
     public function sampleTestResult()
     {
         return $this->hasMany(SampleTestResult::class);
+    }
+
+    public function labOrders()
+    {
+        return $this->hasMany(LabOrder::class, 'checkup_id');
+    }
+
+    public function differentialDiagnoses()
+    {
+        return $this->hasMany(checkup_diseases::class, 'checkup_id');
     }
 }

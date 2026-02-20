@@ -12,22 +12,40 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        \App\Models\User::factory(10)->create();
-        \App\Models\Patient::factory(10)->create();
-        \App\Models\Disease::factory(10)->create();
-        \App\Models\Doctor::factory(10)->create();
-        \App\Models\Pretest::factory(10)->create();
-        \App\Models\DoctorPatient::factory(10)->create();
-
-
-        \App\Models\User::factory()->create([
-            'FirstName' => 'Admin',
-            'MiddleName' => 'Super',
-            'LastName' => 'User',
-            'status' => 1, // Active status
-            'email' => 'admin@example.com',
-            'password' => bcrypt('password'), // Ensure password is hashed
-            'Role' => 'admin', // Assigning the 'admin' role
+        // Core hospital structure
+        $this->call([
+            DepartmentSeeder::class,
+            RoomSeeder::class,
+            UserSeeder::class,
+            DoctorSeeder::class,
+            PatientSeeder::class,
+            DoctorPatientSeeder::class,
+            
+            // Clinical operations
+            DiseaseSeeder::class,
+            LabTestSeeder::class,
+            BillingSettingSeeder::class,
+            PretestSeeder::class,
+            AppointmentSeeder::class,
+            CheckupSeeder::class,
+            LabOrderSeeder::class,
+            LabOrderItemSeeder::class,
+            CheckupDiseaseSeeder::class,
+            MedicalRecordSeeder::class,
+            SampleTestResultSeeder::class,
+            
+            // Pharmacy operations
+            MedicineSeeder::class,
+            MedicineBatchSeeder::class,
+            MedicineOrderSeeder::class,
+            
+            // Billing and records
+            BillSeeder::class,
+            PrescriptionSeeder::class,
+            AdmissionSeeder::class,
+            
+            // Communications
+            NotificationSeeder::class,
         ]);
     }
 }

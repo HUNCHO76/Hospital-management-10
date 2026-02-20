@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Patient;
 use App\Models\Pretest;
-use App\Models\Pre_test;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -16,7 +15,7 @@ class PreTestController extends Controller
     public function index()
     {
         // Fetch all pre-tests
-        $pre_tests = Pretest::with('patient')->paginate(10);
+        $pre_tests = Pretest::with('patient')->latest()->paginate(10);
         return view('pre_tests.index', compact('pre_tests'));
     }
 
@@ -24,10 +23,16 @@ class PreTestController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create($id)
+    public function create($id = null)
     {
-        $patient = Patient::findOrFail($id);
-        return view('pre_tests.create', compact('patient'));
+        if ($id) {
+            $patient = Patient::findOrFail($id);
+            return view('pre_tests.create', compact('patient'));
+        }
+        
+        // If no patient ID provided, show patient selection page
+        $patients = Patient::all();
+        return view('pre_tests.select_patient', compact('patients'));
     }
 
     /**
@@ -37,18 +42,18 @@ class PreTestController extends Controller
     {
         $validated = $request->validate([
             'patient_id' => 'required|exists:patients,id',
-            'height' => 'required|numeric',
-            'weight' => 'required|numeric',
-            'blood_pressure' => 'required|string',
-            'temperature' => 'required|numeric',
-            'pulse_rate' => 'required|integer',
-            'respiration_rate' => 'required|integer',
+            'height' => 'required|numeric|min:0|max:300',
+            'weight' => 'required|numeric|min:0|max:500',
+            'blood_pressure' => 'required|string|max:20',
+            'temperature' => 'required|numeric|min:30|max:45',
+            'pulse_rate' => 'required|integer|min:30|max:200',
+            'respiration_rate' => 'required|integer|min:5|max:60',
             'notes' => 'nullable|string',
         ]);
 
         $validated['nurse_id'] = Auth::id(); // Assuming nurse is authenticated user
 
-        Pre_test::create($validated);
+        Pretest::create($validated);
 
         return redirect()->back()->with('success', 'Pre-test recorded successfully.');
     }
@@ -56,7 +61,7 @@ class PreTestController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Pre_test $pre_test)
+    public function show(Pretest $pretest)
     {
         //
     }
@@ -64,7 +69,7 @@ class PreTestController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Pre_test $pre_test)
+    public function edit(Pretest $pretest)
     {
         //
     }
@@ -72,7 +77,7 @@ class PreTestController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Pre_test $pre_test)
+    public function update(Request $request, Pretest $pretest)
     {
         //
     }
@@ -80,7 +85,7 @@ class PreTestController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Pre_test $pre_test)
+    public function destroy(Pretest $pretest)
     {
         //
     }

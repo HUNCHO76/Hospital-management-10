@@ -19,9 +19,9 @@
                 @foreach ($doctorPatients as $assignment)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
-                    <td>{{ $assignment->pretest->patient->full_name }}</td>
-                    <td>{{ $assignment->doctor->user->FirstName }} {{ $assignment->doctor->user->LastName }}</td>
-                    <td>{{ $assignment->doctor->specialization }}</td>
+                    <td>{{ $assignment->patient->full_name ?? 'N/A' }}</td>
+                    <td>{{ $assignment->doctor->user->FirstName ?? '' }} {{ $assignment->doctor->user->LastName ?? '' }}</td>
+                    <td>{{ $assignment->doctor->specialization ?? 'N/A' }}</td>
                     <td>
                         <!-- Action Dropdown -->
                         <div class="dropdown">

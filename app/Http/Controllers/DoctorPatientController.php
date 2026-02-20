@@ -5,10 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Doctor;
 use App\Models\Patient;
 use App\Models\Pretest;
-use App\Models\Pre_test;
 use Illuminate\Http\Request;
 use App\Models\DoctorPatient;
-use App\Models\Doctor_Patient;
 use App\Http\Controllers\Controller;
 
 class DoctorPatientController extends Controller
@@ -18,7 +16,7 @@ class DoctorPatientController extends Controller
      */
     public function index()
     {
-         $doctorPatients = DoctorPatient::paginate(10);
+         $doctorPatients = DoctorPatient::with(['doctor.user', 'patient'])->latest()->paginate(10);
         return view('DoctorPatient.index', compact('doctorPatients'));
     }
 
@@ -38,13 +36,17 @@ class DoctorPatientController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'pretest_id' => 'required|exists:pre_tests,id',
+            'pretest_id' => 'required|exists:pretests,id',
             'doctor_id' => 'required|exists:doctors,id',
         ]);
-        // dd($request);
+        
+        // Get the patient_id from the pretest
+        $pretest = Pretest::findOrFail($request->pretest_id);
+        
         DoctorPatient::create([
-            'pretest_id' => $request->pretest_id,
+            'patient_id' => $pretest->patient_id,
             'doctor_id' => $request->doctor_id,
+            'assigned_at' => now(),
         ]);
 
         return to_route('doctor_patient.index')->with('success', 'Doctor assigned to patient successfully!');

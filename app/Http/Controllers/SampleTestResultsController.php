@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\checkup;
+use App\Models\Doctor;
 use Illuminate\Http\Request;
 use App\Models\sample_test_results;
 
@@ -13,9 +14,19 @@ class SampleTestResultsController extends Controller
      */
     public function index()
     {
-        $patients = checkup::orderBy('created_at', 'desc')
-            ->get()
-            ->unique('patient_id');
+        $query = checkup::with(['patient', 'doctor.user', 'pretest'])
+            ->orderBy('created_at', 'desc');
+        
+        // If user is a doctor, show only their checkups
+        if (auth()->user()->Role === 'doctor') {
+            $doctor = Doctor::where('user_id', auth()->id())->first();
+            if ($doctor) {
+                $query->where('doctor_id', $doctor->id);
+            }
+        }
+        
+        $patients = $query->get();
+        
         return view('LabCheckUp.index', compact('patients'));
     }
 
@@ -71,10 +82,10 @@ class SampleTestResultsController extends Controller
      */
     public function show($id)
     {
-        $checkups = checkup::where('patient_id', $id)->get();
+        $checkup = checkup::with(['patient', 'doctor.user', 'pretest', 'sampleTestResult'])
+            ->findOrFail($id);
 
-        // dd($checkups);
-        return view('LabCheckUp.show', compact('checkups' ));
+        return view('LabCheckUp.show', compact('checkup'));
     }
 
     /**

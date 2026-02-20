@@ -1,66 +1,131 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Hospital Management System
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Role-based hospital platform built with Laravel, Blade, Tailwind, and Alpine.js. The system supports end-to-end hospital workflows including appointments, checkups, lab operations, pharmacy, admissions, and cashier billing.
 
-## About Laravel
+## Core Modules
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- Patient registration and profile management
+- Appointment scheduling and follow-up
+- Pretest and checkup/consultation workflow
+- Prescription and pharmacy operations
+- Lab Test Ordering & Results Management
+- Billing / Cashier module (invoices, payments, insurance claims, reports)
+- Role-based dashboards and sidebar navigation
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Roles
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- Admin
+- Receptionist
+- Doctor
+- Nurse
+- Pharmacist
+- Lab Technician (`Lab Technician` / `lab_technician`)
+- Cashier
+- Patient
 
-## Learning Laravel
+## Tech Stack
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- PHP 8.2+
+- Laravel 10
+- MySQL / MariaDB
+- Blade Templates
+- Tailwind CSS
+- Alpine.js
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## Quick Setup
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+1. Install dependencies
 
-## Laravel Sponsors
+```bash
+composer install
+npm install
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+2. Configure environment
 
-### Premium Partners
+```bash
+cp .env.example .env
+php artisan key:generate
+```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+3. Set DB credentials in `.env`, then run migrations and seeders
 
-## Contributing
+```bash
+php artisan migrate --seed
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+4. Link storage and run app
 
-## Code of Conduct
+```bash
+php artisan storage:link
+npm run dev
+php artisan serve
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## Billing Module (Cashier)
 
-## Security Vulnerabilities
+### Features
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+- Create invoices with dynamic line items
+- Apply discount and tax calculations
+- Save invoice as draft or pending
+- Record payments with method/reference
+- Auto-update invoice payment status (`pending`, `partially_paid`, `paid`)
+- Auto-create insurance claim when payment method is `insurance`
+- Daily and monthly cashier reports
+- Patient billing history
+- Printable invoice view
+- Admin billing settings and insurance claim management
+
+### Main Data Tables
+
+- `invoices`
+- `invoice_items`
+- `payments`
+- `insurance_claims`
+- `billing_settings`
+
+### Key Cashier Routes
+
+- `cashier.billing-dashboard`
+- `cashier.billing-queue`
+- `cashier.invoices.create`
+- `cashier.invoices.store`
+- `cashier.invoices.show`
+- `cashier.invoices.payment`
+- `cashier.invoices.payments`
+- `cashier.reports.daily`
+- `cashier.reports.monthly`
+
+### Key Admin Billing Routes
+
+- `admin.billing.settings.edit`
+- `admin.billing.settings.update`
+- `admin.billing.reports.index`
+- `admin.billing.insurance-claims.index`
+- `admin.billing.insurance-claims.update`
+
+## Lab Module (Doctor / Lab Technician)
+
+### Features
+
+- Doctors create lab orders per patient/checkup
+- Lab technicians process pending orders and enter results
+- Completed results available in doctor-facing views
+- Sidebar badges for pending lab tasks and unread completed results
+
+### Main Data Tables
+
+- `lab_tests`
+- `lab_orders`
+- `lab_order_items`
+
+## Notes for Development
+
+- Run `php artisan route:list` to inspect role routes.
+- Use seeded settings for billing defaults (`BillingSettingSeeder`).
+- If reports/files are not accessible, re-run `php artisan storage:link`.
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+This project follows the Laravel ecosystem conventions and is intended for educational and internal hospital workflow use.

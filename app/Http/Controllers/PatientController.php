@@ -32,8 +32,7 @@ class PatientController extends Controller
         // Validate incoming request data
         $request->validate([
             'registration_no' => 'nullable|string|max:255',
-            'FullName' => 'required|string|max:255',
-            // 'Date_of_birth' => 'nullable|date',
+            'full_name' => 'required|string|max:255',
             'age' => 'nullable|integer',
             'gender' => 'nullable|string|max:255',
             'marital_status' => 'nullable|string|max:255',
@@ -46,7 +45,7 @@ class PatientController extends Controller
 
         // Insert data into the patients table
         $patient = new Patient();
-        $patient->registration_no = $request->registration_no;
+        $patient->registration_no = 'PAT-' . strtoupper(uniqid());
         $patient->full_name = $request->full_name;
         $patient->user_id = auth()->id();
         // $patient->Date_of_birth = $request->Date_of_birth;
@@ -70,7 +69,7 @@ class PatientController extends Controller
      */
     public function show()
     {
-        $patients = Patient::paginate(10);
+        $patients = Patient::latest()->paginate(10);
         return view('Patient.index', compact('patients'));
     }
 
